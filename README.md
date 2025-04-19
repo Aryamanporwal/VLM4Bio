@@ -1,65 +1,157 @@
-# 🧬 VLM4Bio Species Classification - Replication Project
+# VLM4Bio: Species Classification Replication Project
 
-This repository contains a partial replication of the NeurIPS 2024 paper:
+A partial replication of the NeurIPS 2024 paper [VLM4Bio: A Benchmark Dataset to Evaluate Pretrained Vision-Language Models for Trait Discovery from Biological Images](https://proceedings.neurips.cc/paper/2024/file/...). This repository focuses on the **Species Classification** task, assessing the zero-shot performance of various open‑source Vision‑Language Models (VLMs) on fish, bird, and butterfly images.
 
-> **[VLM4Bio: A Benchmark Dataset to Evaluate Pretrained Vision-Language Models for Trait Discovery from Biological Images](https://proceedings.neurips.cc/paper_files/paper/2024/file/eced4a5fbc776e81b45e2f72447f0164-Paper-Datasets_and_Benchmarks_Track.pdf)**
+## 📋 Table of Contents
 
-## 📌 Project Overview
+- [🔍 Introduction](#-introduction)
+- [✨ Features](#-features)
+- [📊 Dataset](#-dataset)
+- [🧠 Models](#-models)
+- [📁 Project Structure](#-project-structure)
+- [⚙️ Installation](#️-installation)
+- [🚀 Usage](#-usage)
+- [🧪 Experiments](#-experiments)
+- [📈 Results](#-results)
+- [📊 Presentation Summary](#-presentation-summary)
+- [🛠 Contributing](#-contributing)
+- [✉️ Contact](#-contact)
 
-This project focuses **only on the Species Classification** task from the original paper using various open-source Vision-Language Models (VLMs). We aim to evaluate the zero-shot performance of these models on biological images from fish, birds, and butterflies.
+---
 
-## 🧠 Models Used
+## 🔍 Introduction
 
-We used the following pre-trained VLMs for inference:
+Vision‑Language Models (VLMs) have shown remarkable zero‑shot capabilities on generic vision tasks. **VLM4Bio** introduces a benchmark to evaluate these models on trait discovery within biological images. This replication project zeroes in on the Species Classification task, measuring how well pretrained VLMs can identify species across three taxonomic groups without any fine‑tuning.
 
-- `Salesforce/blip2-flan-t5-xxl`
-- `Salesforce/blip-vqa-base`
-- `Qwen/Qwen2-VL-7B-Instruct`
-- `llava-hf/llava-1.5-7b-hf`
-- `Qwen/Qwen2-VL-2B-Instruct`
-- `Salesforce/blip-vqa-capfilt-large`
+## ✨ Features
 
-## 🖼️ Dataset
+- **Zero‑Shot Evaluation**: Test pretrained models directly on unseen biological images.
+- **Difficulty Tiers**: Split images into *Easy*, *Medium*, and *Hard* subsets to analyze performance across levels of visual challenge.
+- **Prompt Engineering**: Compare different prompting strategies, including contextual prompts, dense captions, and Chain‑of‑Thought (CoT).
+- **Robustness Checks**: Perform False‑Confidence Test (FCT) and "None of the Above" (NOTA) experiments to gauge model reliability.
 
-A custom dataset inspired by the VLM4Bio format was created and is publicly available on Kaggle:
+## 📊 Dataset
 
-- 📷 [Images (10K)](https://www.kaggle.com/datasets/aryamanporwal12/vlm4bio-10k-images)
-- 📑 [CSV (questions, options, ground truths)](https://www.kaggle.com/datasets/aryamanporwal12/vlm4bio-csv)
+Images and metadata are hosted on Kaggle:
 
-The dataset contains:
-- Images of fish, birds, and butterflies
-- Open-ended and Multiple Choice (MC) questions
-- Difficulty levels: Easy, Medium, Hard
+- 📁 [Image Dataset (10k images)](https://www.kaggle.com/datasets/aryamanporwal12/vlm4bio-10k-images)
+- 🧾 [Metadata & CSV Files](https://www.kaggle.com/datasets/aryamanporwal12/vlm4bio-csv)
 
-## 🧪 Tasks Performed
+CSV files include:
 
-All species classification experiments and evaluations are documented in this report:
+- `fish.csv` — Ground‑truth labels and image paths for fish species.
+- `bird.csv` — Metadata for bird species classification.
+- `butterfly.csv` — Metadata for butterfly species classification.
 
-- 📄 [`species classification.pdf`](https://github.com/Aryamanporwal/VLM4Bio/blob/main/species%20classification.pdf)
+The CSVs contain the following columns:
 
-Tasks include:
+| Column      | Description                                   |
+|-------------|-----------------------------------------------|
+| `image_path`| Local path to the image file                  |
+| `question`  | Classification prompt/question                |
+| `options`   | List of candidate species (for MC tasks)      |
+| `answer`    | Ground‑truth species label (zero‑shot target) |
 
-- Zero-shot species classification with VLMs
-- Prompt engineering: Contextual, Dense Captioning, and Chain-of-Thought (CoT)
-- Difficulty-based evaluation (easy/medium/hard)
-- Reasoning robustness tests: False Confidence Test (FCT) and None of the Above (NOTA)
+## 🧠 Models
 
-## 🎞️ Project Presentation
+We evaluated the following pretrained VLMs (from Hugging Face):
 
-A detailed presentation including project background, goals, models, methodology, evaluation pipeline, and Gantt chart:
+| Model Alias                       | HF Model ID                         |
+|-----------------------------------|-------------------------------------|
+| BLIP2-Flan-T5                     | `Salesforce/blip2-flan-t5-xxl`      |
+| BLIP-VQA-Base                     | `Salesforce/blip-vqa-base`          |
+| Qwen2-VL-7B-Instruct              | `Qwen/Qwen2-VL-7B-Instruct`         |
+| LLaVA-1.5-7B                      | `llava-hf/llava-1.5-7b-hf`          |
+| Qwen2-VL-2B-Instruct              | `Qwen/Qwen2-VL-2B-Instruct`         |
+| BLIP-VQA-CapFilt-Large            | `Salesforce/blip-vqa-capfilt-large` |
 
-- 🎤 [`Project_Presentation.pdf`](https://github.com/Aryamanporwal/VLM4Bio/blob/main/Project_Presentation%20final.pdf)
+*Feel free to add or swap models by updating the `--model_name` argument.*
 
-## 📄 Reference
+## 📁 Project Structure
 
-- Original Paper: [VLM4Bio - NeurIPS 2024](https://proceedings.neurips.cc/paper_files/paper/2024/file/eced4a5fbc776e81b45e2f72447f0164-Paper-Datasets_and_Benchmarks_Track.pdf)
-- Authors: M. Maruf, Arka Daw, Kazi Sajeed Mehrab, et al.
-
-## 🚀 How to Run
-
-Clone the repository:
-
+```text
+VLM4Bio/
+├── data_for_easy_med_hard/       # Split images by difficulty
+│   ├── easy/
+│   ├── medium/
+│   └── hard/
+├── bird.csv                      # Bird metadata
+├── butterfly.csv                 # Butterfly metadata
+├── fish.csv                      # Fish metadata
+├── main.py                       # Run experiments on easy/medium
+├── main_for_hard_data.py         # Run experiments on hard data
+├── merging_data.py               # Utilities to merge/preprocess CSVs
+├── results/                      # Output logs and metrics for exp1
+├── results_exp2/                 # Output logs and metrics for exp2
+├── species classification.pdf    # Detailed experiment report
+├── Project_Presentation final.pdf# Slide deck overview
+└── README.md                     # ← You are here
+```
+## ⚙️ Installation
 ```bash
-git clone https://github.com/your-username/vlm4bio-species-classification.git
-cd vlm4bio-species-classification
-# VLM4Bio_Replication
+#clone the repo
+git clone https://github.com/Aryamanporwal/VLM4Bio.git
+cd VLM4Bio
+
+# create & activate venv
+python3 -m venv .venv
+source .venv/bin/activate
+
+# install deps
+pip install torch torchvision transformers pandas numpy scikit-learn matplotlib
+```
+(If a requirements.txt is available, you can instead run pip install -r requirements.txt.)
+
+##🚀 Usage
+```bash
+#Species Classification (Easy/Medium)
+python main.py \
+  --model_name Salesforce/blip2-flan-t5-xxl \
+  --dataset easy
+#--model_name: HF model identifier
+#--dataset: easy, medium
+#Species Classification (Hard)
+python main_for_hard_data.py \
+  --model_name llava-hf/llava-1.5-7b-hf
+```
+## 🧪 Experiments
+
+- **Zero‑Shot Accuracy**: Measures standard classification accuracy.
+- **Prompt Ablation**: Compares contextual vs. CoT prompts.
+- **Robustness Tests**: FCT and NOTA to test model confidence and out‑of‑domain handling.
+
+*Detailed methodologies are described in [species classification.pdf](species%20classification.pdf).*
+
+## 📈 Results
+
+- Raw logs and metric summaries are available under `results/` and `results_exp2/`.
+- **Key findings**:
+  - BLIP2-Flan-T5 achieved highest zero‑shot accuracy on *easy* images.
+  - Performance degrades significantly on *hard* subset without CoT prompts.
+
+## 📊 Presentation Summary
+
+The **Project Presentation** (PDF) offers a visual and conceptual overview of the goals, methodologies, and key findings of the replication effort. It outlines:
+
+- Motivation and relevance of biological trait discovery
+- Description of the datasets and taxonomy splits
+- Challenges in fine-grained species classification
+- VLM architectures explored and their comparative performance
+- Observations from experiments on difficulty tiers and prompt types
+
+## 🛠 Contributing
+
+Contributions are welcome! To add new models or evaluation protocols:
+
+1. Fork the repository  
+2. Create a feature branch (`git checkout -b feature/your-change`)  
+3. Implement changes and update documentation  
+4. Submit a Pull Request
+
+Please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/).
+
+## ✉️ Contact
+
+Maintainer: Aryaman Porwal  
+Email: [aryamanlucknow@gmail.com](mailto:aryamanlucknow@gmail.com)
+

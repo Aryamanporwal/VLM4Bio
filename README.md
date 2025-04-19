@@ -1,6 +1,6 @@
 # VLM4Bio: Species Classification Replication Project
 
-A partial replication of the NeurIPS 2024 paper [VLM4Bio: A Benchmark Dataset to Evaluate Pretrained Vision-Language Models for Trait Discovery from Biological Images](https://proceedings.neurips.cc/paper/2024/file/...). This repository focuses on the **Species Classification** task, assessing the zero-shot performance of various open‑source Vision‑Language Models (VLMs) on fish, bird, and butterfly images.
+A partial replication of the NeurIPS 2024 paper [VLM4Bio: A Benchmark Dataset to Evaluate Pretrained Vision-Language Models for Trait Discovery from Biological Images](https://proceedings.neurips.cc/paper_files/paper/2024/file/eced4a5fbc776e81b45e2f72447f0164-Paper-Datasets_and_Benchmarks_Track.pdf). This repository focuses on the **Species Classification** task, assessing the zero-shot performance of various open‑source Vision‑Language Models (VLMs) on fish, bird, and butterfly images.
 
 ## 📋 Table of Contents
 

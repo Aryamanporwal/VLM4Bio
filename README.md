@@ -102,7 +102,7 @@ pip install torch torchvision transformers pandas numpy scikit-learn matplotlib
 ```
 (If a requirements.txt is available, you can instead run pip install -r requirements.txt.)
 
-##🚀 Usage
+## 🚀 Usage
 ```bash
 #Species Classification (Easy/Medium)
 python main.py \

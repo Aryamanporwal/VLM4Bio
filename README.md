@@ -48,7 +48,7 @@ Tasks include:
 
 A detailed presentation including project background, goals, models, methodology, evaluation pipeline, and Gantt chart:
 
-- 🎤 [`Project_Presentation.pdf`](./Project_Presentation.pdf)
+- 🎤 [`Project_Presentation.pdf`](https://github.com/Aryamanporwal/VLM4Bio/blob/main/Project_Presentation%20final.pdf)
 
 ## 📄 Reference
 

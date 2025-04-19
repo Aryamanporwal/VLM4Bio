@@ -35,7 +35,7 @@ The dataset contains:
 
 All species classification experiments and evaluations are documented in this report:
 
-- 📄 [`species classification.pdf`](./species%20classification.pdf)
+- 📄 [`species classification.pdf`](https://github.com/Aryamanporwal/VLM4Bio/blob/main/species%20classification.pdf)
 
 Tasks include:
 
